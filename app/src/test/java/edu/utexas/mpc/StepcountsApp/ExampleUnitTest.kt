@@ -1,4 +1,4 @@
-package edu.utexas.mpc.samplerestweatherapp
+package edu.utexas.mpc.StepcountsApp
 
 import org.junit.Test
 

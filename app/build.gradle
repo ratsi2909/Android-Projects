@@ -13,7 +13,7 @@ repositories {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "edu.utexas.mpc.samplerestweatherapp"
+        applicationId "edu.utexas.mpc.stepcountsapp"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

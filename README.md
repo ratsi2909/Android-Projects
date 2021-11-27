@@ -1,3 +1,3 @@
-# SampleRESTWeatherApp1
-mile4
-Milestone4 Emerging Tech , android app and pi
+# StepcountsApp
+mile5
+Milestone5 Emerging Tech , android app and pi

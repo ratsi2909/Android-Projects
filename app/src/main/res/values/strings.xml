@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">SampleRESTWeatherApp</string>
+    <string name="app_name">StepcountsApp</string>
+    <string name="confirm_switch">Confirm Wifi Switch</string>
+    <string name="switch_wifi_msg">Are you done switching wifi</string>
+    <string name="yes">Yes</string>
+    <string name="no">no</string>
+    <string name="switch_wifi">Switch Wifi</string>
+    <string name="switch_wifi_message">Please switch to Pi wifi - IOT-MIS-2020-5</string>
+    <string name="switched_wifi">Switched Wifi</string>
 </resources>
