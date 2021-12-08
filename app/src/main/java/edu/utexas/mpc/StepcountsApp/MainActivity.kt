@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var switchwifiButton: Button
     lateinit var goalcheckinButton: Button
     lateinit var smsButton: Button
+    lateinit var btnok: Button
 
     lateinit var queue: RequestQueue
     lateinit var gson: Gson
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mostRecentWeatherForecast: ForeCastWeatherResult
     lateinit var mqttAndroidClient: MqttAndroidClient
     lateinit var todaysDate: String
+
 
     // you may need to change this depending on where your MQTT broker is running
     val serverUri = "tcp://192.168.4.14:1883"
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     var weatherData  = ""
     var weatherForecast  = ""
-    var editTextInput = ""
+    var onmessageflag = "False"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -134,7 +136,8 @@ class MainActivity : AppCompatActivity() {
                 println(message)
                 textView.text = message.toString()
                 retrieveButton.setVisibility(View.VISIBLE)
-                if(textView.text.contains("Goal"))
+                if(textView.text.contains("Goal") && onmessageflag == "False")
+                    onmessageflag == "True"
                     smsdialog()
 
             }
@@ -328,8 +331,9 @@ class MainActivity : AppCompatActivity() {
 
         et2 = dialog.findViewById(R.id.et2)
         et3 = dialog.findViewById(R.id.et3)
+        btnok = dialog.findViewById(R.id.btnok)
 
-        val btnok = dialog.findViewById(R.id.btnok) as Button
+        //val btnok = dialog.findViewById(R.id.btnok) as Button
         btnok.setOnClickListener {
             var sms = SmsManager.getDefault()
             sms.sendTextMessage(et2.getText().toString(),"Group4",et3.getText().toString(),null,null)
