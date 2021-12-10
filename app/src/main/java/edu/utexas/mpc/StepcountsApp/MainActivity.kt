@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var switchwifiButton: Button
     lateinit var goalcheckinButton: Button
     lateinit var smsButton: Button
-    lateinit var btnok: Button
+    //lateinit var btnok: Button
 
     lateinit var queue: RequestQueue
     lateinit var gson: Gson
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mostRecentWeatherForecast: ForeCastWeatherResult
     lateinit var mqttAndroidClient: MqttAndroidClient
     lateinit var todaysDate: String
+    lateinit var onmessageflag: String
 
 
     // you may need to change this depending on where your MQTT broker is running
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     var weatherData  = ""
     var weatherForecast  = ""
-    var onmessageflag = "False"
+    //var onmessageflag = "False"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,9 +137,21 @@ class MainActivity : AppCompatActivity() {
                 println(message)
                 textView.text = message.toString()
                 retrieveButton.setVisibility(View.VISIBLE)
-                if(textView.text.contains("Goal") && onmessageflag == "False")
-                    onmessageflag == "True"
-                    smsdialog()
+                onmessageflag = "True"
+                println("????????????")
+                println(onmessageflag)
+                if(textView.text.contains("Goal"))
+                {
+                    if (onmessageflag.equals("True") )
+                    {
+                        println("###########")
+                        println(onmessageflag)
+                        onmessageflag = "False"
+                        println("***********")
+                        println(onmessageflag)
+                        smsdialog()
+                    }
+                }
 
             }
 
@@ -323,11 +336,12 @@ class MainActivity : AppCompatActivity() {
     fun sendtext(activity: Activity){
         println("+++++++ allowing user to send text ...")
         val dialog = Dialog(activity)
-        dialog.setCancelable(false)
+        //dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_layout)
 
         var et2: EditText? = null
         var et3: EditText? = null
+        var btnok: Button
 
         et2 = dialog.findViewById(R.id.et2)
         et3 = dialog.findViewById(R.id.et3)
@@ -335,6 +349,7 @@ class MainActivity : AppCompatActivity() {
 
         //val btnok = dialog.findViewById(R.id.btnok) as Button
         btnok.setOnClickListener {
+            println("send test button is working")
             var sms = SmsManager.getDefault()
             sms.sendTextMessage(et2.getText().toString(),"Group4",et3.getText().toString(),null,null)
             dialog.dismiss()
